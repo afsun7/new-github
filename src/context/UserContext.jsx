@@ -33,6 +33,7 @@ export default function UserProvider({ children }) {
 
   //get users specifications
   async function getUsers() {
+    setUser([]);
     setloadingUser(true);
     const { data } = await axios.get(
       `https://api.github.com/users/${nameUser}`

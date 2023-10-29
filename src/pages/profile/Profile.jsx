@@ -6,21 +6,11 @@ import Bio from "./bio/Bio";
 import { UserContext } from "../../context/UserContext";
 import Follow from "./follow/Follow";
 import Repository from "./repository/Repository";
-import axios from "axios";
 
 export default function Profile() {
   const { name } = useParams();
   const { setName, user, loadingUser } = useContext(UserContext);
   setName(name);
-
-  async function getUsers() {
-    const { data } = await axios.get(`https://api.github.com/users/${name}`);
-
-    console.log(data);
-  }
-  useEffect(() => {
-    getUsers();
-  }, [name]);
 
   return (
     <div className="-mt-4">
